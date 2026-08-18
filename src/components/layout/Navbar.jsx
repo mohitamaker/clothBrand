@@ -1,107 +1,54 @@
-import React from 'react'
-import { useState } from 'react'
-const Navbar = () => {
-    const navItems = [
-        { name: "New", path: "/new" },
-        { name: "Featured", path: "/featured" },
-        { name: "Men", path: "/men" },
-        { name: "Women", path: "/women" },
-        { name: "Kids", path: "/kids" },
-        { name: "Sale", path: "/sale", sale: true },
-    ];
-
-    const [mobileMenu, setMobileMenu] = useState(false);
+import { useState } from "react";
+export default function Navbar() {
+    const navItems = ["New In", "Women", "Men", "Kids", "Sale"];
+    const [open, setOpen] = useState(false);
     return (
-        <div>
-
-            <header className="w-full bg-white border-b border-gray-200 sticky top-0 z-50">
-                <nav className="h-[64px] px-5 sm:px-8 lg:px-12 flex items-center justify-between">
-                    <div className="flex items-center">
-                        <button onClick={() => setMobileMenu(!mobileMenu)} className="lg:hidden mr-4 p-1" aria-label="Open menu">
-                            {mobileMenu ? (
-                                <i className="ri-close-line"></i>
-                            ) : (
-                                <i className="ri-menu-line"></i>
-                            )}
-                        </button>
-                        <a href="/" className="text-[24px] sm:text-[26px] font-black tracking-[-1.5px] italic">ZEVORA</a>
-                    </div>
-
-                    <div className="hidden lg:flex items-center h-full gap-8 xl:gap-10">
+        <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white">
+            <nav className="mx-auto flex h-16 max-w-360 items-center justify-between px-5 md:px-8 lg:px-10">
+                <div className="flex items-center gap-5">
+                    <button
+                        onClick={() => setOpen(!open)}
+                        className="lg:hidden"
+                        aria-label="Menu"
+                    >
+                        <i className={open ? "ri-close-line text-2xl" : "ri-menu-line text-2xl"}></i>
+                    </button>
+                    <a href="/" className="text-2xl font-black italic tracking-[-1.5px]">ZEVORA</a>
+                </div>
+                <div className="hidden items-center gap-8 lg:flex">
+                    {navItems.map((item) => (
+                        <a key={item} href="#" className={`text-[14px] font-medium  hover:underline underline-offset-4 transition-all duration-500 ${item === "Sale" ? "text-red-600" : "text-black"}`}
+                        >{item}</a>
+                    ))}
+                </div>
+                <div className="flex items-center gap-4 md:gap-5">
+                    <button aria-label="Search" className="transition-transform hover:scale-110">
+                        <i className="ri-search-line text-[21px]"></i>
+                    </button>
+                    <button aria-label="Wishlist" className="hidden transition-transform hover:scale-110 sm:block">
+                        <i className="ri-heart-3-line text-[21px]"></i>
+                    </button>
+                    <button aria-label="Cart" className="relative transition-transform hover:scale-110">
+                        <i className="ri-shopping-bag-line text-[21px]"></i>
+                        <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-black text-[9px] text-white">0</span>
+                    </button>
+                    <button aria-label="Profile" className="hidden transition-transform hover:scale-110 sm:block">
+                        <i className="ri-user-line text-[21px]"></i>
+                    </button>
+                </div>
+            </nav>
+            {open && (
+                <div className="border-t border-gray-200 bg-white lg:hidden fixed inset-0 top-16 z-40 h-[calc(100dvh-4rem)] overflow-y-auto">
+                    <div className="flex min-h-full flex-col px-6 py-8">
                         {navItems.map((item) => (
-                            <a key={item.name} href={item.path} className={`relative h-full items-centertext-[13px] font-medium tracking-[-0.1px] transition-colors group ${item.sale ? "text-red-500" : "text-gray-800 hover:text-black"}`}>
-                                {item.name}
-                                <span className={`absolute bottom-[12px] left-0 h-[1.5px] bg-black transition-all duration-300 ${item.sale ? "w-full bg-red-500" : "w-0 group-hover:w-full"}`} />
-                            </a>
+                            <a key={item} href="#" onClick={() => setOpen(false)} className={`py-5 text-lg font-medium ${item === "Sale" ? "text-red-600" : "text-black"}`}
+                            >{item}</a>
                         ))}
-                    </div>
-
-                    <div className="flex items-center gap-4 sm:gap-5">
-
-                        <button className="group" aria-label="Search">
-                            <i className="ri-search-line"></i>
-                        </button>
-
-                        <button className="group hidden sm:block" aria-label="Wishlist">
-                            <i className="ri-heart-line"></i>
-                        </button>
-
-                        <button
-                            className="group relative"
-                            aria-label="Cart"
-                        >
-                            <i className="ri-shopping-bag-line"></i>
-
-                            <span className="absolute -top-2 -right-2 text-[9px] w-[15px] h-[15px] rounded-full bg-black text-white flex items-center justify-center">
-                                0
-                            </span>
-                        </button>
-
-                        <button
-                            className="group hidden sm:block"
-                            aria-label="Profile"
-                        >
-                            <i className="ri-user-line"></i>
-                        </button>
-
-                    </div>
-
-                </nav>
-
-                <div
-                    className={`lg:hidden overflow-hidden transition-all duration-300 border-t
-                        border-gray-100
-                        ${mobileMenu
-                            ? "max-h-[500px] opacity-100"
-                            : "max-h-0 opacity-0"
-                        }
-          `}
-                >
-
-                    <div className="px-6 py-5 bg-white">
-
-                        {navItems.map((item) => (
-                            <a
-                                key={item.name}
-                                href={item.path}
-                                onClick={() => setMobileMenu(false)}
-                                className={`flex items-center justify-between py-4 border-b border-gray-100 text-[14px] font-medium ${item.sale? "text-red-500": "text-gray-900"}`}
-                            >
-                                <span>{item.name}</span>
-                                <i className="ri-arrow-right-s-line"></i>
-                            </a>
-                        ))}
-
-
-                        {/* Mobile Actions */}
-                        <div className="flex items-center gap-6 pt-5">
-
+                        <div className="mt-4 flex gap-8 border-t border-gray-200 pt-6">
                             <button className="flex items-center gap-2 text-sm">
-                                <i className="ri-search-line"></i>
-                                Search
+                                <i className="ri-heart-3-line"></i>
+                                Wishlist
                             </button>
-
-
                             <button className="flex items-center gap-2 text-sm">
                                 <i className="ri-user-line"></i>
                                 Profile
@@ -109,9 +56,7 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-            </header>
-        </div>
-    )
+            )}
+        </header>
+    );
 }
-
-export default Navbar

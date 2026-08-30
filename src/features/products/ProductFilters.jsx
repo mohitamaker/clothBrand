@@ -1,6 +1,32 @@
 import React from "react";
 
-function ProductFilters() {
+function ProductFilters({
+  selectedCategories = [],
+  setSelectedCategories,
+}) {
+  const categories = [
+    "T-Shirts",
+    "Hoodies",
+    "Jackets",
+    "Joggers",
+    "Footwear",
+    "Accessories",
+  ];
+
+  const handleCategoryChange = (category) => {
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(
+        selectedCategories.filter((item) => item !== category)
+      );
+    } else {
+      setSelectedCategories([...selectedCategories, category]);
+    }
+  };
+
+  const handleClearAll = () => {
+    setSelectedCategories([]);
+  };
+
   return (
     <aside className="w-full">
 
@@ -10,7 +36,11 @@ function ProductFilters() {
           Filters
         </h2>
 
-        <button className="text-xs font-medium text-gray-500 hover:text-black">
+        <button
+          type="button"
+          onClick={handleClearAll}
+          className="text-xs font-medium text-gray-500 hover:text-black"
+        >
           Clear All
         </button>
       </div>
@@ -22,22 +52,18 @@ function ProductFilters() {
         </h3>
 
         <div className="flex flex-col gap-3">
-          {[
-            "T-Shirts",
-            "Hoodies",
-            "Jackets",
-            "Joggers",
-            "Footwear",
-            "Accessories",
-          ].map((category) => (
+          {categories.map((category) => (
             <label
               key={category}
               className="flex cursor-pointer items-center gap-3 text-sm text-gray-700"
             >
               <input
                 type="checkbox"
+                checked={selectedCategories.includes(category)}
+                onChange={() => handleCategoryChange(category)}
                 className="h-4 w-4 accent-black"
               />
+
               {category}
             </label>
           ))}
@@ -54,6 +80,7 @@ function ProductFilters() {
           {["XS", "S", "M", "L", "XL", "XXL"].map((size) => (
             <button
               key={size}
+              type="button"
               className="h-9 min-w-10 border border-black/20 px-3 text-xs font-medium hover:border-black hover:bg-black hover:text-white"
             >
               {size}
@@ -78,6 +105,7 @@ function ProductFilters() {
                 type="checkbox"
                 className="h-4 w-4 accent-black"
               />
+
               {color}
             </label>
           ))}
@@ -106,6 +134,7 @@ function ProductFilters() {
                 name="price"
                 className="h-4 w-4 accent-black"
               />
+
               {price}
             </label>
           ))}

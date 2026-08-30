@@ -130,3 +130,56 @@ export const categories = [
         image: "https://images.unsplash.com/photo-1519238360530-67349d78aaf3?auto=format&fit=crop&w=900&q=85"
     }
 ];
+
+export const trendingProducts = [
+    { id: 101, name: "ZEVORA Court Shatter Low Sneakers", category: "Lifestyle Sneakers", price: "₹2,639", originalPrice: "₹5,599", discount: "-53%", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85" },
+
+    { id: 102, name: "ZEVORA Smashic Comfort Casual Sneakers", category: "Casual Sneakers", price: "₹2,115", originalPrice: "₹4,499", discount: "-52%", image: "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=85" },
+
+    { id: 103, name: "ZEVORA ProFoam Galactic Sneakers", category: "Lifestyle Sneakers", price: "₹5,359", originalPrice: "₹7,999", discount: "-33%", image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=800&q=85" },
+
+    { id: 104, name: "ZEVORA Electrify NITRO™ Running Shoes", category: "Men's Running Shoes", price: "₹6,749", originalPrice: "₹8,999", discount: "-25%", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85" },
+
+    { id: 105, name: "ZEVORA SoftRide Running Shoes", category: "Women's Running Shoes", price: "₹4,999", originalPrice: "₹6,999", discount: "-29%", image: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=800&q=85" },
+
+    {
+        id: 106,
+        name: "ZEVORA Women's Essential Leggings",
+        category: "Women's Lifestyle",
+        price: "₹3,999",
+        originalPrice: "₹6,999", discount: "-40%",
+        image: "https://images.unsplash.com/photo-1506629905607-d4057d0068f1?auto=format&fit=crop&w=900&q=85"
+    },
+    {
+        id: 107,
+        name: "ZEVORA Everyday Relaxed Tee",
+        category: "Women's T-Shirts",
+        price: "₹2,299",
+        originalPrice: "₹6,999", discount: "-29%",
+        image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85"
+    },
+    {
+        id: 108,
+        name: "ZEVORA Women's Track Pants",
+        category: "Women's Training",
+        price: "₹3,999",
+        originalPrice: "₹6,999", discount: "-29%",
+        image: "https://images.unsplash.com/photo-1506629905607-d4057d0068f1?auto=format&fit=crop&w=900&q=85"
+    },
+    {
+        id: 109,
+        name: "ZEVORA Urban Runner",
+        category: "Women's Sneakers",
+        price: "₹7,999",
+        originalPrice: "₹6,999", discount: "-29%",
+        image: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?auto=format&fit=crop&w=900&q=85"
+    },
+    {
+        id: 110,
+        name: "ZEVORA Core Training Shorts",
+        category: "Men's Training",
+        price: "₹2,499",
+        originalPrice: "₹6,999", discount: "-29%",
+        image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=900&q=85"
+    }
+];

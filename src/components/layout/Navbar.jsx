@@ -18,9 +18,16 @@ export default function Navbar() {
                 </div>
                 <div className="hidden items-center gap-8 lg:flex">
                     {navItems.map((item) => (
-                        <a key={item} href={`#${item.toLowerCase().replace(' ', '-')}`} className={`text-[13px] font-bold uppercase tracking-[0.08em] hover:underline underline-offset-8 transition-all duration-500 ${item === "Sale" ? "text-red-600" : "text-black"}`}
-                        >{item}</a>
-                    ))}
+                                        <a
+                    key={item}
+                    href={
+                        item === "Men"
+                        ? "/men"
+                        : `#${item.toLowerCase().replace(" ", "-")}` }
+                    className={`text-[13px] font-bold uppercase tracking-[0.08em] hover:underline underline-offset-8 transition-all duration-500 ${
+                        item === "Sale" ? "text-red-600" : "text-black"}`}
+                    >{item}
+                    </a>  ))}
                 </div>
                 <div className="flex items-center gap-4 md:gap-5">
                     <button aria-label="Search" className="transition-transform hover:scale-110" type="button">
